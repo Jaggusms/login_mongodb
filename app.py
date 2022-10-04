@@ -32,7 +32,7 @@ def validation_login():
             return render_template('login.html',info='Invalid Password')
     
     name=list(data['name'])[list(data['email']).index(mail)]
-    return render_template('home.html',name=name)
+    return render_template('index.html',name=name)
     
 
 @app.route("/register")
@@ -50,7 +50,7 @@ def uplode_database():
     if mail in list(data['email']):
 	    return render_template('login.html',info='Alreaday User please login')
     client['newdatabase']['jaggu_table'].insert_one(d)
-    return render_template("home.html",name=name1)
+    return render_template("index.html",name=name1)
 
 
 
