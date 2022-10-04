@@ -17,7 +17,7 @@ app = Flask(__name__)
 #client=pymongo(app)
 @app.route('/')
 def login():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/validation_login',methods=['POST','GET'])
 def validation_login():
@@ -26,13 +26,13 @@ def validation_login():
     mail=request.form['username']
     pwd=request.form['password']
     if mail not in list(data['email']):
-	    return render_template('login.html',info='Invalid User')
+	    return render_template('index.html',info='Invalid User')
     else:
         if pwd not in list(data['password']):
-            return render_template('login.html',info='Invalid Password')
+            return render_template('index.html',info='Invalid Password')
     
     name=list(data['name'])[list(data['email']).index(mail)]
-    return render_template('index.html',name=name)
+    return render_template('home.html',name=name)
     
 
 @app.route("/register")
@@ -48,9 +48,9 @@ def uplode_database():
     d['name'],d['email'],d['password']=name1,mail,pwd
     data=pd.DataFrame(list(client.newdatabase.jaggu_table.find()))
     if mail in list(data['email']):
-	    return render_template('login.html',info='Alreaday User please login')
+	    return render_template('index.html',info='Alreaday User please login')
     client['newdatabase']['jaggu_table'].insert_one(d)
-    return render_template("index.html",name=name1)
+    return render_template("home.html",name=name1)
 
 
 
