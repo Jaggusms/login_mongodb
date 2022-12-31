@@ -3,13 +3,18 @@
     "builds":[
         {
             "src":"app.py",
-            "use":"@vercel/Dockerfile"
+            "use":"@vercel/python"
+        },
+        {
+            "src":"commands.sh",
+            "use":"@vercel/static-build"
         }
+
     ],
     "routes":[
         {
             "src":"/(.*)",
             "dest":"/"
-        }
+        }   
     ]
 }
