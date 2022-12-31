@@ -1,16 +1,18 @@
 from distutils.command.config import config
 from distutils.log import debug
-from select import select
-from unicodedata import name
 from flask import Flask,request,render_template 
-import pyodbc
+import pyodbc,ssl
 import numpy as np
 import pandas as pd
 import ssl
 import urllib
 
 from pymongo import MongoClient
-client = MongoClient("mongodb+srv://Jaggusmk:1234@cluster0.bzwyzf9.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://Jaggusmk:4321@cluster0.bzwyzf9.mongodb.net/?retryWrites=true&w=majority",ssl=True)
+#client=MongoClient("mongosh mongodb+srv://cluster0.bzwyzf9.mongodb.net/myFirstDatabase --apiVersion 1 --username Jaggusmk")
+
+#client = MongoClient("mongodb+srv://Jaggusmk:<password>@cluster0.bzwyzf9.mongodb.net/?retryWrites=true&w=majority" ss)
+
 app = Flask(__name__)
 #app.config['SECRET_KEY']='5b091dfe7b468925f2db0b9d2ecccb5482ec75f1'
 #app.config['MONGO_URI']="mongodb+srv://Jaggusmk:Jaggu@9089@cluster0.bzwyzf9.mongodb.net/?retryWrites=true&w=majority"
