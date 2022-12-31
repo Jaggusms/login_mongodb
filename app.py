@@ -1,7 +1,7 @@
 from distutils.command.config import config
 from distutils.log import debug
 from flask import Flask,request,render_template 
-import pyodbc,ssl
+import ssl
 import numpy as np
 import pandas as pd
 import ssl
