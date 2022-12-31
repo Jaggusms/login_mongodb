@@ -1,6 +1,4 @@
 flask
 pymongo
 pandas
-distutils
 pyodbc
-urllib
